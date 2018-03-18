@@ -9,7 +9,7 @@ if (process.env.NODE_ENV !== 'production') {
     port = process.env.TEST_PORT
     mongoUrl = process.env.TEST_MONGODB_URI
   }
-  
+
   module.exports = {
     mongoUrl,
     port

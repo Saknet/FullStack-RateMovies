@@ -1,0 +1,36 @@
+{
+  "name": "fullstack-ratemoviestvshows",
+  "version": "1.0.0",
+  "description": "Lyhyt aihekuvaus: Tarkoituksena on toteuttaa jonkun asteinen imdb klooni eli sivusto missä on mahdollisuutta ainakin antaa arvosanoja sekä leffoille että tv sarjoille. Lisää toiminallisuutta tulee jos aika riittää. Frontendin toteutan Reactilla ja backendin Nodella.",
+  "main": "index.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node index.js",
+    "watch": "cross-env NODE_ENV=development nodemon index.js",
+    "test": "cross-env NODE_ENV=test jest --verbose",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saknet/FullStack-RateMoviesTvShows.git"
+  },
+  "author": "Andreas Andra",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Saknet/FullStack-RateMoviesTvShows/issues"
+  },
+  "homepage": "https://github.com/Saknet/FullStack-RateMoviesTvShows#readme",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
+    "express": "^4.16.3",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.10"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.2",
+    "cross-env": "^5.1.4",
+    "eslint": "^4.19.0",
+    "nodemon": "^1.17.2"
+  }
+}

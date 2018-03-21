@@ -2,15 +2,15 @@ const mongoose = require('mongoose')
 
 const movieSchema = new mongoose.Schema({
   title: String,
-  directors: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' },
-  writers: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' },
-  actors: { type: mongoose.Schema.Types.ObjectId, ref: 'Person' },
+  directors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
+  writers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
+  actors: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Person' }],
   releaseYear: Number,
   plotSummary: String,
   runTime: Number,
   country: String,
-  ratings: { type: mongoose.Schema.Types.ObjectId, ref: 'Rating' },
-  reviews: { type: mongoose.Schema.Types.ObjectId, ref: 'Review' },
+  ratings: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Rating' }],
+  reviews: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Review' }],
   user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 

@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
 
 const ratingSchema = new mongoose.Schema({
-  movie: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
+  movie: { type: mongoose.Schema.Types.ObjectId, ref: 'Movie' },
   value: Number,
-  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 ratingSchema.statics.format = (rating) => {

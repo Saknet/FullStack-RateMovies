@@ -10,8 +10,8 @@ moviesRouter.get('/', async (request, response) => {
   const movies = await Movie 
     .find({})
     .populate('person', { name: 1, birthday: 1, bornIn: 1, dateOfDeath: 1 })
-    .populate('rating', { value: 1, user: 1 })
-    .populate('review', { value: 1, reviewText: 1, user })
+    .populate('ratings', { value: 1, user: 1 })
+    .populate('reviews', { value: 1, reviewText: 1, user })
     .populate('user', { username: 1, name: 1, birthDay: 1, admin: 1 })
   
   response.json(movies.map(Movie.format))
@@ -21,8 +21,8 @@ moviesRouter.get('/:id', async (request, response) => {
     try {
       const movie = await Movie.findById(request.params.id)
       .populate('person', { name: 1, birthday: 1, bornIn: 1, dateOfDeath: 1 })
-      .populate('rating', { value: 1, user: 1 })
-      .populate('review', { value: 1, reviewText: 1, user })
+      .populate('ratings', { value: 1, user: 1 })
+      .populate('reviews', { value: 1, reviewText: 1, user })
       .populate('user', { username: 1, name: 1, birthDay: 1, admin: 1 })
 
       if (movie) {
@@ -223,6 +223,24 @@ moviesRouter.put('/:id', async (request, response) => {
         console.log(exception)
         response.status(500).json({ error: 'something went wrong...' })
       }
+  }
+})
+
+moviesRouter.get('/:id/reviews/:id', async (request, response) => {
+  try {
+    const review = await Review.findById(request.params.id)
+    .populate('movie', { title: 1, directors: 1, writers: 1, actors: 1, releaseYear: 1, title: 1, plotSummary: 1, runTime: 1, country: 1, ratings: 1, reviews: 1 })
+    .populate('user', { username: 1, name: 1, birthDay: 1, admin: 1 })
+
+    if (review) {
+      response.json(Review.format(review))
+    } else {
+      response.status(404).end()
+    }
+
+  } catch (exception) {
+    console.log(exception)
+    response.status(400).send({ error: 'malformatted id' })
   }
 })
   

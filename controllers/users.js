@@ -43,6 +43,9 @@ usersRouter.get('/', async (request, response) => {
     .find({})
     .populate('ratings', { target: 1, value: 1 })
     .populate('reviews', { target: 1, rating: 1 , reviewText: 1 })
+    .populate('movies', { title: 1, directors: 1, writers: 1, actors: 1, releaseYear: 1, title: 1, plotSummary: 1, runTime: 1, country: 1, ratings: 1, reviews: 1 })
+    .populate('persons', { target: 1, rating: 1 , reviewText: 1 })
+
   response.json(users.map(User.format))
 })
 
@@ -51,6 +54,8 @@ usersRouter.get('/:id', async (request, response) => {
     const user = await User.findById(request.params.id)
       .populate('ratings', { target: 1, value: 1  })
       .populate('reviews', { target: 1, rating: 1 , reviewText: 1 })
+      .populate('movies', { title: 1, directors: 1, writers: 1, actors: 1, releaseYear: 1, title: 1, plotSummary: 1, runTime: 1, country: 1, ratings: 1, reviews: 1 })
+      .populate('persons', { target: 1, rating: 1 , reviewText: 1 })
 
     if (user) {
       response.json(User.format)

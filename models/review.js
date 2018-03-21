@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
 const reviewSchema = new mongoose.Schema({
-  movie: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
+  movie: { type: mongoose.Schema.Types.ObjectId, ref: 'Movie' },
   value: Number,
   reviewTitle: String,
   reviewText: String,
-  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 reviewSchema.statics.format = (review) => {

@@ -6,7 +6,7 @@ const personSchema = new mongoose.Schema({
   bornIn: String,
   dateOfDeath: Date,
   movies: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Movie' }],
-  user: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
+  user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 })
 
 personSchema.statics.format = (person) => {

@@ -11,6 +11,7 @@ mongoose.connect(config.mongoUrl)
 mongoose.Promise = global.Promise
 
 app.use(cors())
+app.use(express.static('build'))
 app.use(bodyParser.json())
 app.use(express.static('build'))
 app.use(middleware.morgan(':method :url :type :status :res[content-length] - :response-time ms'))
